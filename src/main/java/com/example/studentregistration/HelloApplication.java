@@ -13,7 +13,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/studentregistration/fxml/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+
         scene.getStylesheets().add(getClass().getResource("/com/example/studentregistration/css/style.css").toExternalForm());
         stage.setTitle("Student Registration System");
         stage.setScene(scene);

@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +18,9 @@ import java.util.Optional;
 public class DataManager {
     // Singleton instance
     private static DataManager instance;
+
+    private static final String STUDENTS_FILE_PATH = "C:\\Users\\Sushreet\\Documents\\AP\\Ap code\\StudentRegistration\\data\\student.txt";
+
 
     // Data lists
     private List<Student> students;
@@ -48,8 +53,7 @@ public class DataManager {
     // Method to load course data from the student.txt file
     private void loadAvailableCourses() {
         availableCourses.clear();
-        try (InputStream inputStream = getClass().getResourceAsStream("/data/student.txt");
-             Scanner scanner = new Scanner(inputStream)) {
+        try (Scanner scanner = new Scanner(new File(STUDENTS_FILE_PATH))) {
             // Find the "Available Courses" section
             boolean foundSection = false;
             while (scanner.hasNextLine() && !foundSection) {
@@ -80,8 +84,9 @@ public class DataManager {
                     }
                 }
             }
-        } catch (Exception e) {
-            System.err.println("student.txt file not found. " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error reading student.txt from file system: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -89,8 +94,7 @@ public class DataManager {
     // Method to load student data from the student.txt file
     private void loadStudentData() {
         students.clear();
-        try (InputStream inputStream = getClass().getResourceAsStream("/data/student.txt");
-             Scanner scanner = new Scanner(inputStream)) {
+        try (Scanner scanner = new Scanner(new File(STUDENTS_FILE_PATH))) {
             // Find the "Sample Student Data" section
             boolean foundSection = false;
             while (scanner.hasNextLine() && !foundSection) {
@@ -140,8 +144,9 @@ public class DataManager {
                     students.add(newStudent);
                 }
             }
-        } catch (Exception e) {
-            System.err.println("student.txt file not found. " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error reading student.txt from file system: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

@@ -11,8 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 
 public class LoginController {
     @FXML
@@ -20,6 +23,26 @@ public class LoginController {
 
     @FXML
     private PasswordField passwordField;
+
+    @FXML
+    private ImageView loginImageView; // This must match the fx:id in your FXML
+
+    @FXML
+    public void initialize() {
+        try {
+            // The path must be relative to the resources folder root.
+            URL imageUrl = getClass().getResource("/images/logo.jpg");
+            if (imageUrl != null) {
+                Image loginImage = new Image(imageUrl.toExternalForm());
+                loginImageView.setImage(loginImage);
+            } else {
+                System.err.println("Error: Image resource not found at /images/logo.jpg");
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading login image: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     protected void onLoginClick() {
@@ -67,5 +90,3 @@ public class LoginController {
         alert.showAndWait();
     }
 }
-
-// repo
