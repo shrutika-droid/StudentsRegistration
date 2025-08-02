@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label styleClass="dashboard-title" text="Student Dashboard">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="welcomeLabel" styleClass="welcome-message" text="Welcome back, [Student Name]!" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+
+        <!-- Statistics Section -->
+        <GridPane hgap="20.0" styleClass="stats-grid" vgap="10.0">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label styleClass="stats-label" text="Total Courses" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="totalCoursesLabel" styleClass="stats-value" text="0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+                <Label styleClass="stats-label" text="Registered Courses" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="registeredCoursesLabel" styleClass="stats-value" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label styleClass="stats-label" text="Available Courses" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="availableCoursesLabel" styleClass="stats-value" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+                <Label styleClass="stats-label" text="Completed Courses" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="coursesCompletedLabel" styleClass="stats-value" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                <Label styleClass="stats-label" text="Courses In Progress" GridPane.columnIndex="4" GridPane.rowIndex="0">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="coursesInProgressLabel" styleClass="stats-value" text="0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            </children>
+        </GridPane>
+
+        <!-- Registered Courses Section -->
+        <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+            <children>
+                <Label styleClass="section-title" text="My Registered Courses">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <ScrollPane fitToWidth="true" styleClass="course-list-scrollpane" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="registeredCoursesBox" spacing="10.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+
+        <!-- Navigation Buttons -->
+        <HBox alignment="CENTER" spacing="15.0">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+            <children>
+                <Button onAction="#onProfileClick" styleClass="nav-button" text="Profile" />
+                <Button onAction="#onRegisterCourseClick" styleClass="nav-button" text="Register for Courses" />
+                <Button onAction="#onMyCoursesClick" styleClass="nav-button" text="My Courses" />
+                <Button onAction="#onLogoutClick" styleClass="nav-button" text="Logout" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

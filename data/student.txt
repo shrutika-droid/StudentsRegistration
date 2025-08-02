@@ -1,0 +1,23 @@
+Student Data File
+=================
+
+Default Login Credentials:
+Email: shrutika@edu.com
+Password: password123
+Name: Shrutika Ojha
+
+This file can be used to store student information in a simple text format.
+The application currently uses in-memory data storage via the DataManager class.
+
+Sample Student Data:
+- Email: shrutika@edu.com
+- Password: password123
+- Name: Shrutika Ojha
+- Registered Courses: Machine Learning, Advanced Programming, Data Mining
+
+Available Courses:
+- CS101: Introduction to Programming (3 credits) - Sujan Sir
+- PHY201: General Physics (4 credits) - Sapan Sir
+- STAT300: World History II (3 credits) - Dipakar Sir
+- ENG101: Theory of Computation (3 credits) - Saroj Sir
+- BIO107: Composition and Rhetoric (2 credits) - Bijay Sir
